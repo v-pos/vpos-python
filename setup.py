@@ -1,18 +1,22 @@
 from setuptools import setup, find_packages
 
 VERSION = '0.0.1'
-DESCRIPTION = ''
-LONG_DESCRIPTION = ''
+DESCRIPTION = 'Facilitates the intereaction with Vpos API'
+LONG_DESCRIPTION = open("README.md").read()
 
 setup(
     name='vpos',
     version=VERSION,
     author='Ilton Ingui',
     author_email='ilton@nextbss.co.ao',
-    long_description=LONG_DESCRIPTION,
     description=DESCRIPTION,
+    long_description=LONG_DESCRIPTION,
     packages=find_packages(),
-    install_requires=[],
+    url="https://pypi.org/project/vpos/",
+    install_requires=[
+        "Django >= 1.1.1",
+        "pytest"
+    ],
     keywords=['nextbss', 'python', 'vpos', 'point of sales'],
     classifiers=[
         "Development Status :: 1 - Planning",
