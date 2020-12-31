@@ -1,6 +1,6 @@
 # vPOS Python
 
-badges
+![Python](https://github.com/nextbss/vpos-python/workflows/Upload%20Python%20Package/badge.svg)
 
 This python package allows you to interact with the vPOS API
 
@@ -33,21 +33,21 @@ Don't have this information? [Talk to us](suporte@vpos.ao)
 This method retrieves all transactions
 
 ```python
-import Vpos
-transactions = Vpos.get_transactions()
+import vpos
+transactions = vpos.get_transactions()
 ```
 
 ### Get a specific Transaction
 Retrieves a transaction given a valid transaction ID
 ```python
-import Vpos
-transaction = Vpos.get_transaction("1kTFGhJH8i58uD9MdJpMjWnoE")
+import vpos
+transaction = vpos.get_transaction("1kTFGhJH8i58uD9MdJpMjWnoE")
 ```
 
 ### New Payment
 ```python
-import Vpos
-transactions = Vpos.new_payment("900111222", "123.45")
+import vpos
+transactions = vpos.new_payment("900111222", "123.45")
 ```
 | Argument | Description | Type |
 | --- | --- | --- |
@@ -57,8 +57,8 @@ transactions = Vpos.new_payment("900111222", "123.45")
 
 ### Request Refund
 ```python
-import Vpos
-transaction = Vpos.new_refund("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
+import vpos
+transaction = vpos.new_refund("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
 ```
 
 ### Poll Transaction Status
@@ -67,8 +67,8 @@ Poll the status of a transaction given a valid `request_id`.
 Note: The `request_id` in this context is essentially the `transaction_id` of an existing request. 
 
 ```python
-import Vpos
-transaction = Vpos.get_request("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
+import vpos
+transaction = vpos.get_request("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
 ```
 
 | Argument | Description | Type |
