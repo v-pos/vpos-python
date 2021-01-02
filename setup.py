@@ -14,7 +14,6 @@ setup(
     packages=find_packages(),
     url="https://pypi.org/project/vpos/",
     install_requires=[
-        "Django >= 1.1.1",
         "pytest"
     ],
     keywords=['nextbss', 'python', 'vpos', 'point of sales'],
