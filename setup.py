@@ -14,9 +14,10 @@ setup(
     packages=find_packages(),
     url="https://pypi.org/project/vpos/",
     install_requires=[
-        "Django >= 1.1.1",
-        "pytest"
+        "pytest",
+        "requests"
     ],
+    tests_require=['pytest'],
     keywords=['nextbss', 'python', 'vpos', 'point of sales'],
     classifiers=[
         "Development Status :: 1 - Planning",
@@ -26,7 +27,6 @@ setup(
         "Programming Language :: Python :: 3",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows"
-        
     ]
     
 )
