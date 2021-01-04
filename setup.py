@@ -17,6 +17,7 @@ setup(
         "pytest",
         "requests"
     ],
+    tests_require=['pytest'],
     keywords=['nextbss', 'python', 'vpos', 'point of sales'],
     classifiers=[
         "Development Status :: 1 - Planning",
