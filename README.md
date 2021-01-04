@@ -1,12 +1,9 @@
 # vPOS Python
 
-![Python](https://github.com/nextbss/vpos-python/workflows/Upload%20Python%20Package/badge.svg)
+![package](https://github.com/nextbss/vpos-python/workflows/package/badge.svg?branch=main)
+[![](https://img.shields.io/badge/nextbss-opensource-blue.svg)](https://www.nextbss.co.ao)
 
 This python package allows you to interact with the vPOS API
-
-## Features
-
-## Documentation
 
 ## Installation
 
