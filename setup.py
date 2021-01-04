@@ -14,7 +14,8 @@ setup(
     packages=find_packages(),
     url="https://pypi.org/project/vpos/",
     install_requires=[
-        "pytest"
+        "pytest",
+        "requests"
     ],
     keywords=['nextbss', 'python', 'vpos', 'point of sales'],
     classifiers=[
@@ -25,7 +26,6 @@ setup(
         "Programming Language :: Python :: 3",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows"
-        
     ]
     
 )
