@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1'
+VERSION = '1.0'
 DESCRIPTION = 'Facilitates the intereaction with Vpos API'
 LONG_DESCRIPTION = open("README.md").read()
 
@@ -18,13 +18,15 @@ setup(
         "requests"
     ],
     tests_require=['pytest'],
-    keywords=['nextbss', 'python', 'vpos', 'point of sales'],
+    keywords=['nextbss', 'python', 'vpos', 'point of sales', 'emis'],
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
-        "License :: OSI Approved :: MIT License"
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows"
     ]
