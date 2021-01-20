@@ -3,7 +3,23 @@
 ![package](https://github.com/nextbss/vpos-python/workflows/package/badge.svg?branch=main)
 [![](https://img.shields.io/badge/nextbss-opensource-blue.svg)](https://www.nextbss.co.ao)
 
-This python package allows you to interact with the vPOS API
+This python library helps you easily interact with the vPOS API,
+Allowing merchants apps/services to request a payment from a client through his/her mobile phone number.
+
+The service currently works for solutions listed below:
+
+EMIS GPO (Multicaixa Express)
+
+Want to know more about how we are empowering merchants in Angola? See our [website](https://vpos.ao)
+
+### Features
+- Simple interface
+- Uniform plain old objects are returned by all official libraries, so you don't have
+to serialize/deserialize the JSON returned by our API.
+
+### Documentation
+Does interacting directly with our API service sound better to you? 
+See our documentation on [developer.vpos.ao](https://developer.vpos.ao)
 
 ## Installation
 
