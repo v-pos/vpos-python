@@ -26,36 +26,38 @@ Don't have this information? [Talk to us](suporte@vpos.ao)
 
 ## Use
 
-### Get all transactions
-This method retrieves all transactions
-
+### create instance
+Creates a new instance of Vpos
 ```python
 import vpos
-transactions = vpos.get_transactions()
+merchant = Vpos()
+```
+
+### Get all transactions
+This method retrieves all transactions
+```python
+transactions = merchant.get_transactions()
 ```
 
 ### Get a specific Transaction
 Retrieves a transaction given a valid transaction ID
 ```python
-import vpos
-transaction = vpos.get_transaction("1kTFGhJH8i58uD9MdJpMjWnoE")
+transaction = merchant.get_transaction("1kTFGhJH8i58uD9MdJpMjWnoE")
 ```
 
 ### New Payment
 ```python
-import vpos
-transactions = vpos.new_payment("900111222", "123.45")
+transactions = merchant.new_payment("900111222", "123.45")
 ```
 | Argument | Description | Type |
 | --- | --- | --- |
 | `mobile` | The mobile number of the client who will pay | `string`
-| `amount` | The amount the client should pay, eg. "259.99", "259,000.00" | `string`
+| `amount` | The amount the client should pay, eg. "259.99", "259000.00" | `string`
 
 
 ### Request Refund
 ```python
-import vpos
-transaction = vpos.new_refund("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
+transaction = merchant.new_refund("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
 ```
 
 ### Poll Transaction Status
@@ -64,8 +66,7 @@ Poll the status of a transaction given a valid `request_id`.
 Note: The `request_id` in this context is essentially the `transaction_id` of an existing request. 
 
 ```python
-import vpos
-transaction = vpos.get_request("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
+transaction = merchant.get_request("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
 ```
 
 | Argument | Description | Type |
