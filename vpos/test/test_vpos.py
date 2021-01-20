@@ -17,7 +17,6 @@ class TestVpos:
         payment = merchant.new_payment("992563019", "123.45.01")
         assert payment.get('status') == 400
 
-
     def test_should_create_a_new_refund_request_transaction(self):
         merchant = Vpos()
         response = merchant.new_refund("1jYQryG3Qo4nzaOKgJxzWDs25Hv")
@@ -61,6 +60,4 @@ class TestVpos:
 
         response = merchant.get_request(refund_id)
         assert response.get('status') == 200
-    
-    # TODO test_should_get_a_completed_single_request_status
     

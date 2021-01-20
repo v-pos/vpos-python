@@ -113,7 +113,7 @@ class Vpos:
                 
         Returns
         -------
-            a object containg thetransactions data
+            a object containg the transactions data
         """
         host = self.__host()
         request = requests.get(f"{host}/transactions", headers=self.__set_headers())
