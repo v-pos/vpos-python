@@ -13,10 +13,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
     url="https://pypi.org/project/vpos/",
-    install_requires=[
-        "pytest",
-        "requests"
-    ],
+    install_requires=open('requirements.txt').readlines(),
     tests_require=['pytest'],
     keywords=['nextbss', 'python', 'vpos', 'point of sales', 'emis'],
     classifiers=[
