@@ -188,7 +188,7 @@ class Vpos:
 
     def __return_vpos_object(self, response: requests.Response):
         code = response.status_code
-        response_body = {'status': code}
+        response_body = {'status_code': code}
         if code == 200 or code == 201:
             json_response = response.json()
             response_body['data'] = json_response
