@@ -1,6 +1,6 @@
 # vPOS Python
 
-![package](https://github.com/nextbss/vpos-python/workflows/package/badge.svg?branch=main)
+[![package](https://github.com/v-pos/vpos-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/v-pos/vpos-python/actions/workflows/python-package.yml)
 [![](https://img.shields.io/badge/nextbss-opensource-blue.svg)](https://www.nextbss.co.ao)
 
 This python library helps you easily interact with the vPOS API,
@@ -28,6 +28,9 @@ pip install vpos
 ```
 
 ## Configuration
+This python library requires you set up the following environment variables on your machine before interacting with
+the API using this library:
+
 | Variable | Description | Required |
 | --- | --- | --- |
 | `GPO_POS_ID` | The Point of Sale ID provided by EMIS | true |
@@ -35,8 +38,18 @@ pip install vpos
 | `MERCHANT_VPOS_TOKEN` | The API token provided by vPOS | true |
 | `PAYMENT_CALLBACK_URL` | The URL that will handle payment notifications | false |
 | `REFUND_CALLBACK_URL` | The URL that will handle refund notifications | false |
-| `VPOS_ENVIRONMENT` | The vPOS environment, leave empty for `sandbox` mode and use `"prd"` for `production`.  | false |
+| `VPOS_ENVIRONMENT` | The vPOS environment, leave empty for `sandbox` mode and use `'PRD'` for `production`.  | false |
 
+or using one of the optional arguments
+
+| Variable | Description | Required |
+| --- | --- | --- |
+| `pos_id` | The Point of Sale ID provided by EMIS | false |
+| `supervisor_card` | The Supervisor card ID provided by EMIS | false |
+| `token` | The API token provided by vPOS | false |
+| `payment_callback_url` | The URL that will handle payment notifications | false |
+| `refund_callback_url` | The URL that will handle refund notifications | false |
+| `environment` | The vPOS environment, leave empty for `sandbox` mode and use `'PRD'` for `production`.  | false |
 
 Don't have this information? [Talk to us](suporte@vpos.ao)
 
@@ -47,6 +60,8 @@ Creates a new instance of Vpos
 ```python
 import vpos
 merchant = Vpos()
+# or use optional arguments
+merchant = Vpos(token='your_token_here', environment='PRD')
 ```
 
 ### Get all transactions
@@ -58,12 +73,12 @@ transactions = merchant.get_transactions()
 ### Get a specific Transaction
 Retrieves a transaction given a valid transaction ID
 ```python
-transaction = merchant.get_transaction("1kTFGhJH8i58uD9MdJpMjWnoE")
+transaction = merchant.get_transaction('1kTFGhJH8i58uD9MdJpMjWnoE')
 ```
 
 ### New Payment
 ```python
-transactions = merchant.new_payment("900111222", "123.45")
+transactions = merchant.new_payment('900111222', '123.45')
 ```
 | Argument | Description | Type |
 | --- | --- | --- |
@@ -73,7 +88,7 @@ transactions = merchant.new_payment("900111222", "123.45")
 
 ### Request Refund
 ```python
-transaction = merchant.new_refund("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
+transaction = merchant.new_refund('1jHbXEbRTIbbwaoJ6w06nLcRG7X')
 ```
 
 ### Poll Transaction Status
@@ -82,7 +97,7 @@ Poll the status of a transaction given a valid `request_id`.
 Note: The `request_id` in this context is essentially the `transaction_id` of an existing request. 
 
 ```python
-transaction = merchant.get_request("1jHbXEbRTIbbwaoJ6w06nLcRG7X")
+transaction = merchant.get_request('1jHbXEbRTIbbwaoJ6w06nLcRG7X')
 ```
 
 | Argument | Description | Type |
