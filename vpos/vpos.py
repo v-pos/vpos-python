@@ -5,7 +5,7 @@ import uuid
 
 class Vpos:
     """
-    A Class used to represent the Vpos Api
+    A Class used to represent the vPOS Api
 
     ...
     Methods
@@ -23,6 +23,17 @@ class Vpos:
     get_request(request_id):
         Gets a single request
     """
+
+    def __init__(self, environment=None, token=None, pos_id=None, supervisor_card=None, payment_callback_url=None,
+                 refund_callback_url=None):
+        self.environment = environment if environment is not None else "SBX"
+        self.token = token if token is not None else self.__set_token()
+        self.pos_id = pos_id if pos_id is not None else self.__default_pos_id()
+        self.supervisor_card = supervisor_card if supervisor_card is not None else self.__default_supervisor_card()
+        self.payment_callback_url = payment_callback_url if payment_callback_url is not None else \
+            self.__default_payment_callback_url()
+        self.refund_callback_url = refund_callback_url if refund_callback_url is not None else \
+            self.__default_refund_callback_url()
 
     def new_payment(self, customer, amount, **kwargs):
         """Creates a new payment
@@ -54,9 +65,9 @@ class Vpos:
         """
         headers = self.__set_headers()
         host = self.__host()
-        pos_id = kwargs.get('pos_id', self.__default_pos_id())
+        pos_id = kwargs.get('pos_id', self.pos_id)
         callback_url = kwargs.get(
-            'callback_url', self.__default_refund_callback_url())
+            'callback_url', self.refund_callback_url)
         payload = {'type': "payment", 'pos_id': pos_id,
                    'mobile': customer, 'amount': amount,
                    'callback_url': callback_url}
@@ -90,9 +101,9 @@ class Vpos:
             a dictionary with status, message and location
         """
         supervisor_card = kwargs.get(
-            'supervisor_card', self.__default_supervisor_card())
+            'supervisor_card', self.supervisor_card)
         callback_url = kwargs.get(
-            'callback_url', self.__default_refund_callback_url())
+            'callback_url', self.refund_callback_url)
         headers = self.__set_headers()
         host = self.__host()
         payload = {
@@ -186,7 +197,8 @@ class Vpos:
             f"{host}/requests/{request_id}", headers=self.__set_headers())
         return self.__return_vpos_object(response)
 
-    def __return_vpos_object(self, response: requests.Response):
+    @staticmethod
+    def __return_vpos_object(response: requests.Response):
         code = response.status_code
         response_body = {'status_code': code}
         if code == 200 or code == 201:
@@ -200,40 +212,45 @@ class Vpos:
                 response_body['details'] = json_response.get('errors')
                 response_body['message'] = json_response.get('message')
             except AttributeError as err:
-                if err.args.__contains__('get')\
-                   and err.args.__contains__('str'):
+                if err.args.__contains__('get') \
+                        and err.args.__contains__('str'):
                     response_body['message'] = json_response
         return response_body
 
     def __set_headers(self):
         headers = {'Content-Type': "application/json",
                    'Accept': "application/json",
-                   'Authorization': self.__set_token(),
+                   'Authorization': f"Bearer {self.token}",
                    'Idempotency-Key': uuid.uuid4().__str__()}
         return headers
 
-    def __default_pos_id(self):
+    @staticmethod
+    def __default_pos_id():
         pos_id = os.getenv("GPO_POS_ID")
         return int(f"{pos_id}")
 
-    def __default_supervisor_card(self):
+    @staticmethod
+    def __default_supervisor_card():
         supervisor_card = os.getenv("GPO_SUPERVISOR_CARD")
         return f"{supervisor_card}"
 
-    def __set_token(self):
+    @staticmethod
+    def __set_token():
         token = os.getenv("MERCHANT_VPOS_TOKEN")
-        return f"Bearer {token}"
+        return token
 
-    def __default_payment_callback_url(self):
+    @staticmethod
+    def __default_payment_callback_url():
         url = os.getenv("PAYMENT_CALLBACK_URL")
         return url
 
-    def __default_refund_callback_url(self):
+    @staticmethod
+    def __default_refund_callback_url():
         url = os.getenv("REFUND_CALLBACK_URL")
         return url
 
     def __host(self):
-        if os.getenv("VPOS_ENVIRONMENT") == "PRD":
+        if self.environment == "PRD":
             return "https://api.vpos.ao/api/v1"
         else:
             return "https://sandbox.vpos.ao/api/v1"

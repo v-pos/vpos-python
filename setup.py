@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 VERSION = '1.0'
-DESCRIPTION = 'Facilitates the intereaction with Vpos API'
+DESCRIPTION = ' vPOS Python Library '
 LONG_DESCRIPTION = open("README.md").read()
 
 setup(
@@ -15,7 +15,7 @@ setup(
     url="https://pypi.org/project/vpos/",
     install_requires=open('requirements.txt').readlines(),
     tests_require=['pytest'],
-    keywords=['nextbss', 'python', 'vpos', 'point of sales', 'emis'],
+    keywords=['payment', 'online', 'vpos', 'pos', 'emis'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",

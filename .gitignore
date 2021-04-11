@@ -25,3 +25,4 @@ __pycache__/
 .vs/
 /vpos/__pycache__
 /vpos/test/__pycache__
+.idea/
