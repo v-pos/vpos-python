@@ -1,7 +1,7 @@
 # vPOS Python
 
 [![package](https://github.com/v-pos/vpos-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/v-pos/vpos-python/actions/workflows/python-package.yml)
-[![](https://img.shields.io/badge/nextbss-opensource-blue.svg)](https://www.nextbss.co.ao)
+[![](https://img.shields.io/badge/vPOS-OpenSource-blue.svg)](https://www.vpos.ao)
 
 This python library helps you easily interact with the vPOS API,
 Allowing merchants apps/services to request a payment from a client through his/her mobile phone number.
