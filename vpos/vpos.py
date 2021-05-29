@@ -37,7 +37,7 @@ class Vpos:
             The vPOS environment, leave empty for `sandbox` mode and use
             `PRD` for `production`, by default is the environment variable
         token : `str`, optional
-            Token generated at [vPOS](https://merchant.vpos.ao) dashboard,
+            Token generated at vpos site dashboard,
             by default is the environment variable
         pos_id : `str`, optional
             Merchant POS ID provided by EMIS, by default is the environment variable
