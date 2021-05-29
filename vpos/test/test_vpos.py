@@ -1,6 +1,6 @@
 # pylint: disable=C0116,R0201,C0114,C0115
-from vpos.vpos import Vpos
 
+from vpos.vpos import Vpos
 
 class TestVpos:
     # Payments
