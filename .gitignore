@@ -26,3 +26,6 @@ __pycache__/
 /vpos/__pycache__
 /vpos/test/__pycache__
 .idea/
+vpos/__pycache__/__init__.cpython-38.pyc
+vpos/__pycache__/vpos.cpython-38.pyc
+*.pyc

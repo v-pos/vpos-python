@@ -1,6 +1,10 @@
-import requests
+"""
+Module contains Vpos class
+"""
 import os
 import uuid
+
+import requests
 
 
 class Vpos:
@@ -24,12 +28,15 @@ class Vpos:
         Gets a single request
     """
 
-    def __init__(self, environment=None, token=None, pos_id=None, supervisor_card=None, payment_callback_url=None,
+    # pylint: disable=R0913
+    def __init__(self, environment=None, token=None, pos_id=None,
+                 supervisor_card=None, payment_callback_url=None,
                  refund_callback_url=None):
         """
         __init__ Creates a new instance os `Vpos` Class
 
-        With params from environment variable or optionaly defined in the method
+        With params from environment variable or optionaly defined
+        in the method
 
         Parameters
         ----------
@@ -40,7 +47,8 @@ class Vpos:
             Token generated at vpos site dashboard,
             by default is the environment variable
         pos_id : `str`, optional
-            Merchant POS ID provided by EMIS, by default is the environment variable
+            Merchant POS ID provided by EMIS, by default is the environment
+            variable
         supervisor_card : `str`, optional
             Merchant Supervisor Card number provided by EMIS,
             by default is the environment variable
@@ -54,10 +62,13 @@ class Vpos:
         self.environment = environment if environment is not None else "SBX"
         self.token = token if token is not None else self.__set_token()
         self.pos_id = pos_id if pos_id is not None else self.__default_pos_id()
-        self.supervisor_card = supervisor_card if supervisor_card is not None else self.__default_supervisor_card()
-        self.payment_callback_url = payment_callback_url if payment_callback_url is not None else \
+        self.supervisor_card = supervisor_card if supervisor_card is not None \
+            else self.__default_supervisor_card()
+        self.payment_callback_url = payment_callback_url \
+            if payment_callback_url is not None else \
             self.__default_payment_callback_url()
-        self.refund_callback_url = refund_callback_url if refund_callback_url is not None else \
+        self.refund_callback_url = refund_callback_url \
+            if refund_callback_url is not None else \
             self.__default_refund_callback_url()
 
     def new_payment(self, customer, amount, **kwargs):
@@ -227,10 +238,10 @@ class Vpos:
     def __return_vpos_object(response: requests.Response):
         code = response.status_code
         response_body = {'status_code': code}
-        if code == 200 or code == 201:
+        if code in (200, 201):
             json_response = response.json()
             response_body['data'] = json_response
-        elif code == 202 or code == 303:
+        elif code in (202, 303):
             response_body['location'] = response.headers['location']
         else:
             json_response = response.json()
@@ -278,5 +289,5 @@ class Vpos:
     def __host(self):
         if self.environment == "PRD":
             return "https://api.vpos.ao/api/v1"
-        else:
-            return "https://sandbox.vpos.ao/api/v1"
+
+        return "https://sandbox.vpos.ao/api/v1"

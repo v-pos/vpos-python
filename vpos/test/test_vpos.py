@@ -38,7 +38,7 @@ class TestVpos:
         assert response.get('status_code') == 202
 
     # # Negatives
-    def test_should_not_create_a_refund_if_parent_transaction_id_is_blank(self):
+    def test_should_not_create_refund_if_parent_transaction_id_is_blank(self):
         merchant = Vpos()
         response = merchant.new_refund(None)
 
@@ -107,7 +107,8 @@ class TestVpos:
         assert response.get('status_code') == 200
 
     # # Negatives
-    def test_should_not_get_a_running_single_request_status_if_token_is_invalid(self):
+    def test_should_not_get_running_single_request_status_if_token_is_invalid(
+            self):
         initial_merchant = Vpos()
         second_merchant = Vpos(token='1jYQryG3Qo4nzaOKgJxzWDs25Hv')
         response = initial_merchant.new_payment('925888553', '123.45')
