@@ -26,6 +26,31 @@ class Vpos:
 
     def __init__(self, environment=None, token=None, pos_id=None, supervisor_card=None, payment_callback_url=None,
                  refund_callback_url=None):
+        """
+        __init__ Creates a new instance os `Vpos` Class
+
+        With params from environment variable or optionaly defined in the method
+
+        Parameters
+        ----------
+        environment : `str`, optional
+            The vPOS environment, leave empty for `sandbox` mode and use
+            `PRD` for `production`, by default is the environment variable
+        token : `str`, optional
+            Token generated at [vPOS](https://merchant.vpos.ao) dashboard,
+            by default is the environment variable
+        pos_id : `str`, optional
+            Merchant POS ID provided by EMIS, by default is the environment variable
+        supervisor_card : `str`, optional
+            Merchant Supervisor Card number provided by EMIS,
+            by default is the environment variable
+        payment_callback_url : `str`, optional
+            Merchant application JSON endpoint to accept the callback
+            payment response, by default is the environment variable
+        refund_callback_url : `str`, optional
+            Merchant application JSON endpoint to accept the callback
+            refund response, by default is the environment variable
+        """
         self.environment = environment if environment is not None else "SBX"
         self.token = token if token is not None else self.__set_token()
         self.pos_id = pos_id if pos_id is not None else self.__default_pos_id()
@@ -65,6 +90,7 @@ class Vpos:
         """
         headers = self.__set_headers()
         host = self.__host()
+
         pos_id = kwargs.get('pos_id', self.pos_id)
         callback_url = kwargs.get(
             'callback_url', self.refund_callback_url)
