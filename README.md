@@ -38,7 +38,6 @@ the API using this library:
 | `MERCHANT_VPOS_TOKEN` | The API token provided by vPOS | true |
 | `PAYMENT_CALLBACK_URL` | The URL that will handle payment notifications | false |
 | `REFUND_CALLBACK_URL` | The URL that will handle refund notifications | false |
-| `VPOS_ENVIRONMENT` | The vPOS environment, leave empty for `sandbox` mode and use `'PRD'` for `production`.  | false |
 
 or using one of the optional arguments
 
@@ -49,7 +48,6 @@ or using one of the optional arguments
 | `token` | The API token provided by vPOS | false |
 | `payment_callback_url` | The URL that will handle payment notifications | false |
 | `refund_callback_url` | The URL that will handle refund notifications | false |
-| `environment` | The vPOS environment, leave empty for `sandbox` mode and use `'PRD'` for `production`.  | false |
 
 Don't have this information? [Talk to us](suporte@vpos.ao)
 
@@ -61,13 +59,7 @@ Creates a new instance of Vpos
 import vpos
 merchant = Vpos()
 # or use optional arguments
-merchant = Vpos(token='your_token_here', environment='PRD')
-```
-
-### Get all transactions
-This method retrieves all transactions
-```python
-transactions = merchant.get_transactions()
+merchant = Vpos(token='your_token_here')
 ```
 
 ### Get a specific Transaction

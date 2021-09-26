@@ -24,9 +24,8 @@ class Vpos:
         Gets a single request
     """
 
-    def __init__(self, environment=None, token=None, pos_id=None, supervisor_card=None, payment_callback_url=None,
+    def __init__(self, token=None, pos_id=None, supervisor_card=None, payment_callback_url=None,
                  refund_callback_url=None):
-        self.environment = environment if environment is not None else "SBX"
         self.token = token if token is not None else self.__set_token()
         self.pos_id = pos_id if pos_id is not None else self.__default_pos_id()
         self.supervisor_card = supervisor_card if supervisor_card is not None else self.__default_supervisor_card()
@@ -135,20 +134,6 @@ class Vpos:
             headers=self.__set_headers())
         return self.__return_vpos_object(request)
 
-    def get_transactions(self):
-        """Retrieves all transactions
-
-        In the account
-
-        Returns
-        -------
-            a object containg the transactions data
-        """
-        host = self.__host()
-        request = requests.get(
-            f"{host}/transactions", headers=self.__set_headers())
-        return self.__return_vpos_object(request)
-
     def get_request_id(self, response):
         """return the id in a response containing a location attribute
 
@@ -250,7 +235,4 @@ class Vpos:
         return url
 
     def __host(self):
-        if self.environment == "PRD":
-            return "https://api.vpos.ao/api/v1"
-        else:
-            return "https://sandbox.vpos.ao/api/v1"
+        return "https://vpos.ao/api/v1"
