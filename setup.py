@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
-VERSION = '1.0'
+VERSION = '1.0.1'
 DESCRIPTION = ' vPOS Python Library '
 LONG_DESCRIPTION = open("README.md").read()
 
 setup(
     name='vpos',
     version=VERSION,
-    author='Ilton Ingui',
-    author_email='ilton@nextbss.co.ao',
+    author='vPOS Team',
+    author_email='suporte@vpos.ao',
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
@@ -27,5 +27,4 @@ setup(
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows"
     ]
-    
 )
